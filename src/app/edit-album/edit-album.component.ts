@@ -15,11 +15,22 @@ export class EditAlbumComponent implements OnInit {
 
   constructor(private albumService: AlbumService) { }
 
+  editAlbumForm = null;
+
+  editAlbumButton = true;
+
+  showEdit(selectedAlbum) {
+    this.editAlbumForm = selectedAlbum;
+    this.editAlbumButton = null;
+  }
+
   ngOnInit() {
   }
 
   beginUpdatingAlbum(albumToUpdate) {
     this.albumService.updateAlbum(albumToUpdate);
+    this.editAlbumForm = null;
+    this.editAlbumButton = true;
   }
 
   beginDeletingAlbum(albumToDelete) {
